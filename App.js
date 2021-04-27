@@ -1,6 +1,5 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, View } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import {
     useFonts as useOswald,
@@ -8,8 +7,8 @@ import {
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
-import RestaurantsScreen from "./src/screens/RestaurantsScreen";
 import { theme } from "./src/theme";
+import AppNavigator from "./src/navigation/AppNavigator";
 
 export default function App() {
     let [oswaldLoaded] = useOswald({ Oswald_400Regular });
@@ -21,17 +20,8 @@ export default function App() {
 
     return (
         <ThemeProvider theme={theme}>
-            <View style={styles.container}>
-                <RestaurantsScreen />
-                <StatusBar style="auto" />
-            </View>
+            <AppNavigator />
+            <StatusBar style="auto" />
         </ThemeProvider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-    },
-});
