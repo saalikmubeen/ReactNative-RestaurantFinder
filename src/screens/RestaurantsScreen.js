@@ -1,5 +1,10 @@
 import React from "react";
-import { SafeAreaView, StatusBar, FlatList } from "react-native";
+import {
+    SafeAreaView,
+    StatusBar,
+    FlatList,
+    TouchableOpacity,
+} from "react-native";
 import { TextInput } from "react-native-paper";
 import styled from "styled-components/native";
 import RestaurantCard from "../components/RestaurantCard";
@@ -19,7 +24,7 @@ const RestaurantsContainer = styled(FlatList).attrs({
     },
 })``;
 
-const RestaurantsScreen = () => {
+const RestaurantsScreen = ({ navigation }) => {
     const data = [
         { name: 1 },
         { name: 2 },
@@ -46,7 +51,15 @@ const RestaurantsScreen = () => {
                 data={data}
                 keyExtractor={(item) => item.name.toString()}
                 renderItem={() => {
-                    return <RestaurantCard />;
+                    return (
+                        <TouchableOpacity
+                            onPress={() =>
+                                navigation.navigate("Restaurant Details")
+                            }
+                        >
+                            <RestaurantCard />
+                        </TouchableOpacity>
+                    );
                 }}
             />
         </SafeArea>
