@@ -6,6 +6,7 @@ import { LocationContext } from "../contexts/LocationProvider";
 import { RestaurantsContext } from "../contexts/RestaurantsProvider";
 import MapSearchBar from "../components/MapSearchBar";
 import Loading from "../components/Loading";
+import RestaurantCompactCard from "../components/RestaurantCompactCard";
 
 const MapContainer = styled.View`
     flex: 1;
@@ -16,7 +17,7 @@ const Map = styled(MapView)`
     height: ${Dimensions.get("window").height}px;
 `;
 
-export default function MapScreen() {
+export default function MapScreen({ navigation }) {
     const { region, location, setLocation } = useContext(LocationContext);
     const { restaurants, loading } = useContext(RestaurantsContext);
 
@@ -37,7 +38,19 @@ export default function MapScreen() {
                                 latitude: restaurant.geometry.location.lat,
                                 longitude: restaurant.geometry.location.lng,
                             }}
-                        />
+                        >
+                            <MapView.Callout
+                                onPress={() => {
+                                    navigation.navigate("Restaurant Details", {
+                                        restaurant: restaurant,
+                                    });
+                                }}
+                            >
+                                <RestaurantCompactCard
+                                    restaurant={restaurant}
+                                />
+                            </MapView.Callout>
+                        </MapView.Marker>
                     );
                 })}
             </Map>
