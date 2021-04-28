@@ -7,12 +7,14 @@ const SearchContainer = styled.View`
     padding: ${(props) => props.theme.space[3]};
 `;
 
-export default function RestaurantsSearchBar() {
+export default function RestaurantsSearchBar({ toggled, setToggled }) {
     const { location, setLocation } = useContext(LocationContext);
     const [address, setAddress] = useState(location);
     return (
         <SearchContainer>
             <Searchbar
+                icon={toggled ? "heart" : "heart-outline"}
+                onIconPress={setToggled}
                 placeholder="Search for a location"
                 value={address}
                 onChangeText={(text) => setAddress(text)}

@@ -28,8 +28,9 @@ const Title = styled.Text`
     font-family: ${(props) => props.theme.fonts.heading};
 `;
 
-export default function RestaurantCompactCard({ restaurant }) {
-    const Image = Platform.OS === "android" ? StyledWebView : StyledImage;
+export default function RestaurantCompactCard({ restaurant, map }) {
+    const Image =
+        Platform.OS === "android" && map ? StyledWebView : StyledImage;
     return (
         <Card>
             <Image source={{ uri: restaurant.photos[0] }} />

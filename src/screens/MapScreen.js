@@ -47,6 +47,7 @@ export default function MapScreen({ navigation }) {
                                 }}
                             >
                                 <RestaurantCompactCard
+                                    map
                                     restaurant={restaurant}
                                 />
                             </MapView.Callout>

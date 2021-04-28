@@ -4,6 +4,7 @@ import { SvgXml } from "react-native-svg";
 import styled from "styled-components/native";
 import star from "../../assets/star";
 import open from "../../assets/open";
+import Favorite from "./Favorite";
 
 const StyledCard = styled(Card)`
     background-color: ${(props) => props.theme.colors.bg.primary};
@@ -74,6 +75,7 @@ export default function RestaurantCard({ restaurant = {} }) {
 
     return (
         <StyledCard elevation={5}>
+            <Favorite restaurant={restaurant} />
             <CardImage source={{ uri: photos[0] }} />
             <Info>
                 <Title>{name}</Title>
