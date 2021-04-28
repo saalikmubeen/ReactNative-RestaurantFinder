@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FlatList, TouchableOpacity } from "react-native";
-import { ActivityIndicator, Colors } from "react-native-paper";
 import styled from "styled-components/native";
+import Loading from "../components/Loading";
 
 import RestaurantCard from "../components/RestaurantCard";
 import RestaurantsSearchBar from "../components/RestaurantsSearchBar";
@@ -14,25 +14,11 @@ const RestaurantsContainer = styled(FlatList).attrs({
     },
 })``;
 
-const LoadingContainer = styled.View`
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-`;
-
 const RestaurantsScreen = ({ navigation }) => {
     const { restaurants, loading } = useContext(RestaurantsContext);
 
     if (loading) {
-        return (
-            <LoadingContainer>
-                <ActivityIndicator
-                    size={50}
-                    animating={true}
-                    color={Colors.blue300}
-                />
-            </LoadingContainer>
-        );
+        return <Loading />;
     }
 
     return (
