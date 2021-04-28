@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
     SafeAreaView,
     StatusBar,
     FlatList,
     TouchableOpacity,
 } from "react-native";
-import { TextInput } from "react-native-paper";
+import { TextInput, ActivityIndicator, Colors } from "react-native-paper";
 import styled from "styled-components/native";
 import RestaurantCard from "../components/RestaurantCard";
+import { RestaurantsContext } from "../contexts/RestaurantsProvider";
 
 const SafeArea = styled(SafeAreaView)`
     flex: 1;
@@ -24,23 +25,26 @@ const RestaurantsContainer = styled(FlatList).attrs({
     },
 })``;
 
+const LoadingContainer = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`;
+
 const RestaurantsScreen = ({ navigation }) => {
-    const data = [
-        { name: 1 },
-        { name: 2 },
-        { name: 3 },
-        { name: 4 },
-        { name: 5 },
-        { name: 6 },
-        { name: 7 },
-        { name: 8 },
-        { name: 9 },
-        { name: 10 },
-        { name: 11 },
-        { name: 12 },
-        { name: 13 },
-        { name: 14 },
-    ];
+    const { restaurants, loading } = useContext(RestaurantsContext);
+
+    if (loading) {
+        return (
+            <LoadingContainer>
+                <ActivityIndicator
+                    size={50}
+                    animating={true}
+                    color={Colors.blue300}
+                />
+            </LoadingContainer>
+        );
+    }
 
     return (
         <SafeArea>
@@ -48,16 +52,18 @@ const RestaurantsScreen = ({ navigation }) => {
                 <TextInput />
             </SearchContainer>
             <RestaurantsContainer
-                data={data}
-                keyExtractor={(item) => item.name.toString()}
-                renderItem={() => {
+                data={restaurants}
+                keyExtractor={(item) => item.placeId}
+                renderItem={(element) => {
                     return (
                         <TouchableOpacity
                             onPress={() =>
-                                navigation.navigate("Restaurant Details")
+                                navigation.navigate("Restaurant Details", {
+                                    restaurant: element.item,
+                                })
                             }
                         >
-                            <RestaurantCard />
+                            <RestaurantCard restaurant={element.item} />
                         </TouchableOpacity>
                     );
                 }}
