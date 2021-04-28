@@ -1,7 +1,10 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+    createStackNavigator,
+    TransitionPresets,
+} from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
 
 import RestaurantsScreen from "../screens/RestaurantsScreen";
@@ -14,7 +17,10 @@ const Stack = createStackNavigator();
 
 const StackNavigator = () => {
     return (
-        <Stack.Navigator headerMode="none">
+        <Stack.Navigator
+            headerMode="none"
+            screenOptions={{ ...TransitionPresets.ModalPresentationIOS }}
+        >
             <Stack.Screen name="Restaurants" component={RestaurantsScreen} />
             <Stack.Screen
                 name="Restaurant Details"
