@@ -10,7 +10,7 @@ const fetchRestaurants = (location = "37.7749295,-122.4194155") => {
             if (restaurants && restaurants.results.length > 0) {
                 resolve(formatRestaurants(restaurants));
             } else {
-                reject("Restaurant not found");
+                reject("Restaurants not found");
             }
         }, 2000);
     });
