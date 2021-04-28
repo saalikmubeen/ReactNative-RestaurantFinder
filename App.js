@@ -11,6 +11,7 @@ import { theme } from "./src/theme";
 import AppNavigator from "./src/navigation/AppNavigator";
 import { RestaurantsProvider } from "./src/contexts/RestaurantsProvider";
 import { LocationProvider } from "./src/contexts/LocationProvider";
+import { FavoritesProvider } from "./src/contexts/FavoritesProvider";
 
 export default function App() {
     let [oswaldLoaded] = useOswald({ Oswald_400Regular });
@@ -24,7 +25,9 @@ export default function App() {
         <ThemeProvider theme={theme}>
             <LocationProvider>
                 <RestaurantsProvider>
-                    <AppNavigator />
+                    <FavoritesProvider>
+                        <AppNavigator />
+                    </FavoritesProvider>
                 </RestaurantsProvider>
             </LocationProvider>
             <StatusBar style="auto" />
