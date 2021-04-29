@@ -1,17 +1,24 @@
-import React, { useState } from "react";
-import { Title } from "react-native-paper";
+import React, { useState, useContext } from "react";
+import { ActivityIndicator, Colors } from "react-native-paper";
 import {
     Background,
     Container,
     Cover,
+    Error,
+    ErrorContainer,
     Spacer,
     StyledButton,
     StyledInput,
+    Title,
 } from "../components/AuthStyles";
+import { AuthContext } from "../contexts/AuthProvider";
 
 export default function LoginScreen({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const { error, loading, login } = useContext(AuthContext);
+
     return (
         <Background>
             <Cover />
@@ -36,15 +43,29 @@ export default function LoginScreen({ navigation }) {
                     onChangeText={(text) => setPassword(text)}
                 />
 
+                {error && (
+                    <ErrorContainer>
+                        <Error>{error}</Error>
+                    </ErrorContainer>
+                )}
                 <Spacer />
 
-                <StyledButton
-                    icon="lock-open-outline"
-                    mode="contained"
-                    onPress={() => {}}
-                >
-                    Login
-                </StyledButton>
+                {loading ? (
+                    <ActivityIndicator
+                        animating={true}
+                        color={Colors.blue300}
+                    />
+                ) : (
+                    <StyledButton
+                        icon="lock-open-outline"
+                        mode="contained"
+                        onPress={() => {
+                            login(email, password);
+                        }}
+                    >
+                        Login
+                    </StyledButton>
+                )}
             </Container>
             <Spacer />
             <StyledButton mode="contained" onPress={() => navigation.goBack()}>

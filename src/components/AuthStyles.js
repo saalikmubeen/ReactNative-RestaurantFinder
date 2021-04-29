@@ -48,3 +48,8 @@ export const ErrorContainer = styled.View`
 export const Spacer = styled.View`
     margin-bottom: ${(props) => props.theme.space[3]};
 `;
+
+export const Error = styled(Text)`
+    color: ${(props) => props.theme.colors.text.error};
+    font-size: ${(props) => props.theme.fontSizes.caption};
+`;

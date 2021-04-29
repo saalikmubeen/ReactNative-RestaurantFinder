@@ -5,7 +5,11 @@ import { AuthStackNavigator } from "./AuthStackNavigator";
 import { AuthContext } from "../contexts/AuthProvider";
 
 export const AppNavigator = () => {
-    const { user } = useContext(AuthContext);
+    const { user, authLoading } = useContext(AuthContext);
+
+    if (authLoading) {
+        return null;
+    }
     return (
         <NavigationContainer>
             {user ? <TabNavigator /> : <AuthStackNavigator />}

@@ -1,18 +1,25 @@
-import React, { useState } from "react";
-import { Title } from "react-native-paper";
+import React, { useContext, useState } from "react";
+import { ActivityIndicator, Colors } from "react-native-paper";
 import {
     Background,
     Container,
     Cover,
+    Error,
+    ErrorContainer,
     Spacer,
     StyledButton,
     StyledInput,
+    Title,
 } from "../components/AuthStyles";
+import { AuthContext } from "../contexts/AuthProvider";
 
 export default function RegisterScreen({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    const { error, loading, register } = useContext(AuthContext);
+
     return (
         <Background>
             <Cover />
@@ -45,11 +52,29 @@ export default function RegisterScreen({ navigation }) {
                     autoCapitalize="none"
                     onChangeText={(text) => setConfirmPassword(text)}
                 />
+                {error && (
+                    <ErrorContainer>
+                        <Error>{error}</Error>
+                    </ErrorContainer>
+                )}
                 <Spacer />
 
-                <StyledButton icon="email" mode="contained" onPress={() => {}}>
-                    Register
-                </StyledButton>
+                {loading ? (
+                    <ActivityIndicator
+                        animating={true}
+                        color={Colors.blue300}
+                    />
+                ) : (
+                    <StyledButton
+                        icon="email"
+                        mode="contained"
+                        onPress={() => {
+                            register(email, password, confirmPassword);
+                        }}
+                    >
+                        Register
+                    </StyledButton>
+                )}
             </Container>
             <Spacer />
             <StyledButton mode="contained" onPress={() => navigation.goBack()}>
