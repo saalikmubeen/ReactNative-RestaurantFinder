@@ -53,3 +53,11 @@ export const Error = styled(Text)`
     color: ${(props) => props.theme.colors.text.error};
     font-size: ${(props) => props.theme.fontSizes.caption};
 `;
+
+export const AnimationWrapper = styled.View`
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    top: 30px;
+    padding: ${(props) => props.theme.space[2]};
+`;

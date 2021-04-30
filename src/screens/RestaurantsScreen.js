@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
+import { FadeAnimation } from "../animations/FadeAnimation";
 import FavoritesList from "../components/FavoritesList";
 import Loading from "../components/Loading";
 
@@ -30,6 +31,7 @@ const RestaurantsScreen = ({ navigation }) => {
                 setToggled={() => setIsToggled(!isToggled)}
             />
             {isToggled && <FavoritesList navigate={navigation.navigate} />}
+
             <RestaurantsContainer
                 data={restaurants}
                 keyExtractor={(item) => item.placeId}
@@ -42,7 +44,9 @@ const RestaurantsScreen = ({ navigation }) => {
                                 })
                             }
                         >
-                            <RestaurantCard restaurant={element.item} />
+                            <FadeAnimation>
+                                <RestaurantCard restaurant={element.item} />
+                            </FadeAnimation>
                         </TouchableOpacity>
                     );
                 }}
