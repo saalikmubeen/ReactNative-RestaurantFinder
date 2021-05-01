@@ -23,7 +23,7 @@ export const CartProvider = ({ children }) => {
 
     useEffect(() => {
         if (cart.length > 0) {
-            const sum = cart.reduce((acc, next) => (acc += next), 0);
+            const sum = cart.reduce((acc, next) => (acc += next.price), 0);
             setTotal(sum);
         }
     }, [cart]);
