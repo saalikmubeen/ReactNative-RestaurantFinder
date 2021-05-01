@@ -9,11 +9,8 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
 import { theme } from "./src/theme";
 import { AppNavigator } from "./src/navigation";
-import { RestaurantsProvider } from "./src/contexts/RestaurantsProvider";
-import { LocationProvider } from "./src/contexts/LocationProvider";
-import { FavoritesProvider } from "./src/contexts/FavoritesProvider";
+
 import { AuthProvider } from "./src/contexts/AuthProvider";
-import { CartProvider } from "./src/contexts/CartContext";
 
 export default function App() {
     let [oswaldLoaded] = useOswald({ Oswald_400Regular });
@@ -26,15 +23,7 @@ export default function App() {
     return (
         <ThemeProvider theme={theme}>
             <AuthProvider>
-                <LocationProvider>
-                    <RestaurantsProvider>
-                        <FavoritesProvider>
-                            <CartProvider>
-                                <AppNavigator />
-                            </CartProvider>
-                        </FavoritesProvider>
-                    </RestaurantsProvider>
-                </LocationProvider>
+                <AppNavigator />
             </AuthProvider>
             <StatusBar style="auto" />
         </ThemeProvider>
