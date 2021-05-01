@@ -5,7 +5,7 @@ import {
 } from "@react-navigation/stack";
 
 import CheckoutScreen from "../screens/CheckoutScreen";
-import CheckoutSuccessScreen from "../screens/CheckoutSuccessScreen";
+import CheckoutSuccessScreen from "../screens/CheckoutResultScreen";
 
 const Stack = createStackNavigator();
 
@@ -17,7 +17,7 @@ export const CheckoutStackNavigator = () => {
         >
             <Stack.Screen name="Checkout" component={CheckoutScreen} />
             <Stack.Screen
-                name="Checkout Success"
+                name="Checkout Result"
                 component={CheckoutSuccessScreen}
             />
         </Stack.Navigator>
