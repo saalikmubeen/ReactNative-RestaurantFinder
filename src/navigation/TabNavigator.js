@@ -6,6 +6,7 @@ import { RestaurantsStackNavigator } from "./RestaurantsStackNavigator";
 
 import MapScreen from "../screens/MapScreen";
 import { SettingsStackNavigator } from "./SettingsStackNavigator";
+import { CheckoutStackNavigator } from "./CheckoutStackNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -13,6 +14,7 @@ const TAB_ICON = {
     Restaurants: "md-restaurant",
     Map: "md-map",
     Settings: "md-settings",
+    Checkout: "md-cart",
 };
 
 export const TabNavigator = () => {
@@ -39,6 +41,7 @@ export const TabNavigator = () => {
                 name="Restaurants"
                 component={RestaurantsStackNavigator}
             />
+            <Tab.Screen name="Checkout" component={CheckoutStackNavigator} />
             <Tab.Screen name="Map" component={MapScreen} />
             <Tab.Screen name="Settings" component={SettingsStackNavigator} />
         </Tab.Navigator>
