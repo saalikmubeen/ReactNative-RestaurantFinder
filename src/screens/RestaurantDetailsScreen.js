@@ -82,11 +82,11 @@ export default function RestaurantDetailsScreen({ route, navigation }) {
                 icon="cash-usd"
                 mode="contained"
                 onPress={() => {
-                    addToCart(restaurant, { item: "special", price: 1299 });
+                    addToCart(restaurant, { item: "special", price: 49900 });
                     navigation.navigate("Checkout");
                 }}
             >
-                Order Special Only 12.99!
+                Order Special Only ₹499!
             </OrderButton>
         </SafeArea>
     );

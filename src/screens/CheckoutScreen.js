@@ -96,7 +96,7 @@ export default function CheckoutScreen({ navigation }) {
             })
             .catch((err) => {
                 setLoading(false);
-                navigation.navigate("CheckoutError", {
+                navigation.navigate("Checkout Result", {
                     error: err,
                     success: false,
                 });
@@ -125,13 +125,13 @@ export default function CheckoutScreen({ navigation }) {
                         {cart.map(({ item, price }, idx) => {
                             return (
                                 <List.Item
-                                    title={`${item} - ${price / 100}`}
+                                    title={`${item} - ₹${price / 100}`}
                                     key={`item-${idx}`}
                                 />
                             );
                         })}
                     </List.Section>
-                    <Text>Total: {total / 100}</Text>
+                    <Text>Total: ₹{total / 100}</Text>
                 </CartDetailsContainer>
                 <NameInput
                     label="Name"

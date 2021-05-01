@@ -7,10 +7,10 @@ const stripe = stripeClient(
 export const requestToken = (card) => stripe.createToken({ card });
 
 const firebaseFunctionURL =
-    "http://localhost:5001/react-native-restaurant-finder/us-central1/helloWorld";
+    "http://localhost:5001/react-native-restaurant-finder/us-central1/pay";
 
 export const paymentRequest = (token, amount, name) => {
-    return fetch(`${firebaseFunctionURL}`, {
+    return fetch(firebaseFunctionURL, {
         body: JSON.stringify({
             token,
             name,

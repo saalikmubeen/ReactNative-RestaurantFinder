@@ -1,5 +1,4 @@
 import React from "react";
-import { Text } from "react-native";
 import { Avatar } from "react-native-paper";
 import styled from "styled-components";
 import SafeArea from "../components/SafeArea";
@@ -18,6 +17,11 @@ const CartIcon = styled(Avatar.Icon).attrs({
         props.bg || props.theme.colors.brand.primary};
 `;
 
+const Title = styled.Text`
+    font-family: ${(props) => props.theme.fonts.body};
+    font-size: ${(props) => props.theme.fontSizes.body};
+`;
+
 export default function CheckoutSuccessScreen({ route }) {
     const { success, error } = route.params;
     return (
@@ -25,9 +29,9 @@ export default function CheckoutSuccessScreen({ route }) {
             <CartIconContainer>
                 <CartIcon
                     icon={success ? "check-bold" : "close"}
-                    bg={colors.ui.error}
+                    bg={!success && colors.ui.error}
                 />
-                <Text>{success ? "Success!" : error}</Text>
+                <Title>{success ? "Success!" : error}</Title>
             </CartIconContainer>
         </SafeArea>
     );

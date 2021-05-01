@@ -6,7 +6,6 @@ export default function CreditCard({ name, setToken, onError }) {
     const handleChange = async (form) => {
         const status = Object.values(form.status);
         if (status.includes("incomplete")) {
-            console.log("Error");
             return;
         }
 
