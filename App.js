@@ -13,6 +13,7 @@ import { RestaurantsProvider } from "./src/contexts/RestaurantsProvider";
 import { LocationProvider } from "./src/contexts/LocationProvider";
 import { FavoritesProvider } from "./src/contexts/FavoritesProvider";
 import { AuthProvider } from "./src/contexts/AuthProvider";
+import { CartProvider } from "./src/contexts/CartContext";
 
 export default function App() {
     let [oswaldLoaded] = useOswald({ Oswald_400Regular });
@@ -28,7 +29,9 @@ export default function App() {
                 <LocationProvider>
                     <RestaurantsProvider>
                         <FavoritesProvider>
-                            <AppNavigator />
+                            <CartProvider>
+                                <AppNavigator />
+                            </CartProvider>
                         </FavoritesProvider>
                     </RestaurantsProvider>
                 </LocationProvider>
