@@ -125,8 +125,8 @@ export default function CheckoutScreen({ navigation }) {
                         {cart.map(({ item, price }, idx) => {
                             return (
                                 <List.Item
-                                    title={`${item} - ₹${price / 100}`}
                                     key={`item-${idx}`}
+                                    title={`${item} - ₹${price / 100}`}
                                 />
                             );
                         })}

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ScrollView } from "react-native";
-import { List, Button } from "react-native-paper";
+import { List, Button, Divider } from "react-native-paper";
 import styled from "styled-components";
 import RestaurantCard from "../components/RestaurantCard";
 import SafeArea from "../components/SafeArea";
@@ -38,8 +38,11 @@ export default function RestaurantDetailsScreen({ route, navigation }) {
                     onPress={() => setBreakfastExpanded(!breakfastExpanded)}
                 >
                     <List.Item title="Eggs Benedict" />
+                    <Divider />
                     <List.Item title="Classic Breakfast" />
                 </List.Accordion>
+
+                <Divider />
 
                 <List.Accordion
                     title="Lunch"
@@ -48,9 +51,13 @@ export default function RestaurantDetailsScreen({ route, navigation }) {
                     onPress={() => setLunchExpanded(!lunchExpanded)}
                 >
                     <List.Item title="Burger w/ Fries" />
+                    <Divider />
                     <List.Item title="Steak Sandwich" />
+                    <Divider />
                     <List.Item title="Mushroom Soup" />
                 </List.Accordion>
+
+                <Divider />
 
                 <List.Accordion
                     title="Dinner"
@@ -61,9 +68,13 @@ export default function RestaurantDetailsScreen({ route, navigation }) {
                     onPress={() => setDinnerExpanded(!dinnerExpanded)}
                 >
                     <List.Item title="Spaghetti Bolognese" />
+                    <Divider />
                     <List.Item title="Veal Cutlet with Chicken Mushroom Rotini" />
+                    <Divider />
                     <List.Item title="Steak Frites" />
                 </List.Accordion>
+
+                <Divider />
 
                 <List.Accordion
                     title="Drinks"
@@ -72,9 +83,13 @@ export default function RestaurantDetailsScreen({ route, navigation }) {
                     onPress={() => setDrinksExpanded(!drinksExpanded)}
                 >
                     <List.Item title="Coffee" />
+                    <Divider />
                     <List.Item title="Tea" />
+                    <Divider />
                     <List.Item title="Modelo" />
+                    <Divider />
                     <List.Item title="Coke" />
+                    <Divider />
                     <List.Item title="Fanta" />
                 </List.Accordion>
             </ScrollView>

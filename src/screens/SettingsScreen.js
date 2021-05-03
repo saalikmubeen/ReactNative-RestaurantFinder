@@ -5,6 +5,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { List, Avatar } from "react-native-paper";
 import styled from "styled-components";
 import SafeArea from "../components/SafeArea";
+import { colors } from "../theme/colors";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const AvatarContainer = styled.View`
@@ -19,6 +20,16 @@ const Title = styled.Text`
 
 const SettingsItem = styled(List.Item)`
     padding: ${(props) => props.theme.space[3]};
+    background-color: rgba(255, 255, 255, 0.4);
+    margin-bottom: ${(props) => props.theme.space[2]};
+`;
+
+const Background = styled.ImageBackground.attrs({
+    source: require("../../assets/home_bg.jpg"),
+})`
+    position: absolute;
+    width: 100%;
+    height: 100%;
 `;
 
 export default function SettingsScreen({ navigation }) {
@@ -38,20 +49,21 @@ export default function SettingsScreen({ navigation }) {
 
     return (
         <SafeArea>
+            <Background />
             <AvatarContainer>
                 <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
                     {!photo && (
                         <Avatar.Icon
                             size={120}
                             icon="human"
-                            backgroundColor="#2182BD"
+                            backgroundColor={colors.brand.primary}
                         />
                     )}
                     {photo && (
                         <Avatar.Image
                             size={120}
                             source={{ uri: photo }}
-                            backgroundColor="#2182BD"
+                            backgroundColor={colors.brand.primary}
                         />
                     )}
                 </TouchableOpacity>
@@ -63,14 +75,22 @@ export default function SettingsScreen({ navigation }) {
                     title="Favorites"
                     description="View your favorites"
                     left={(props) => (
-                        <List.Icon {...props} color="black" icon="heart" />
+                        <List.Icon
+                            {...props}
+                            color={colors.ui.error}
+                            icon="heart"
+                        />
                     )}
                     onPress={() => navigation.navigate("Favorites")}
                 />
                 <SettingsItem
                     title="Logout"
                     left={(props) => (
-                        <List.Icon {...props} color="black" icon="door" />
+                        <List.Icon
+                            {...props}
+                            color={colors.ui.secondary}
+                            icon="door"
+                        />
                     )}
                     onPress={logout}
                 />

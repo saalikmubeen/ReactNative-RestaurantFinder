@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { ScrollView, TouchableOpacity } from "react-native";
+import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 import { FavoritesContext } from "../contexts/FavoritesProvider";
 import RestaurantCompactCard from "./RestaurantCompactCard";
 
-const FavoritesContainer = styled.View`
+const FavoritesContainer = styled(Card)`
     padding: 10px;
+    border-radius: 15px;
 `;
 
 const CardWrapper = styled.View`
@@ -26,7 +28,7 @@ export default function FavoritesList({ navigate }) {
     }
 
     return (
-        <FavoritesContainer>
+        <FavoritesContainer elevation={3}>
             <Title>Favorites</Title>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {favorites.map((restaurant) => {

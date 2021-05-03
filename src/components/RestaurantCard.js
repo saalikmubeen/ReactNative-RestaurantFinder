@@ -8,6 +8,8 @@ import Favorite from "./Favorite";
 
 const StyledCard = styled(Card)`
     background-color: ${(props) => props.theme.colors.bg.primary};
+    width: 95%;
+    align-self: center;
     margin-bottom: ${(props) => props.theme.space[3]};
 `;
 
@@ -74,7 +76,7 @@ export default function RestaurantCard({ restaurant = {} }) {
     const ratingArray = Array(Math.floor(rating)).fill(0);
 
     return (
-        <StyledCard elevation={5}>
+        <StyledCard elevation={2}>
             <Favorite restaurant={restaurant} />
             <CardImage source={{ uri: photos[0] }} />
             <Info>

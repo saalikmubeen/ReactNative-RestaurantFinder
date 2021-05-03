@@ -7,6 +7,7 @@ import { RestaurantsStackNavigator } from "./RestaurantsStackNavigator";
 import MapScreen from "../screens/MapScreen";
 import { SettingsStackNavigator } from "./SettingsStackNavigator";
 import { CheckoutStackNavigator } from "./CheckoutStackNavigator";
+import { colors } from "../theme/colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,8 +34,8 @@ export const TabNavigator = () => {
                 },
             })}
             tabBarOptions={{
-                activeTintColor: "tomato",
-                inactiveTintColor: "gray",
+                activeTintColor: colors.brand.primary,
+                inactiveTintColor: colors.brand.muted,
             }}
         >
             <Tab.Screen
